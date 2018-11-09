@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+    <form th:action="@{/logout}" method="get">
+        <button class="btn btn-md btn-danger btn-block" name="registration"
+                type="Submit">Logout
+        </button>
+    </form>
+
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <span th:utext="${usuarioNome}"></span>
+            </div>
+            <div class="panel-body">
+				<div class="list-group list-group-flush">
+				  <div class="list-group-item list-group-item-action active">Dados do Usuário</div>
+				  <div class="list-group-item"><label th:text="'Nome: ' + ${usuario.nome}"></label></div>
+				  <div class="list-group-item"><label th:text="'Sobrenome: ' + ${usuario.sobrenome}"></label></div>
+				  <div class="list-group-item"><label th:text="'Gênero: ' + ${usuario.genero == 'M' ? 'Masculino' : 'Feminino'}"></label></div>
+				  <div class="list-group-item"><label th:text="'Data de Nascimento: ' + ${#dates.format(usuario.nascimento, 'dd/MM/yyyy')}"></label></div>
+				  <div class="list-group-item"><label th:text="'CPF: ' + ${usuario.cpf}"></label></div>
+				  <div class="list-group-item"><label th:text="'Data de Cadastro: ' + ${#dates.format(usuario.cadastro, 'dd/MM/yyyy')}"></label></div>
+				  <div class="list-group-item"><label th:text="'Status: ' + ${usuario.status ? 'Ativo' : 'Inativo'}"></label></div>
+				</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
